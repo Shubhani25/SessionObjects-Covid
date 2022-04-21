@@ -11,6 +11,8 @@ out.println("Session was created at: "+dt);
 out.println("<br>");
 int n = session.getMaxInactiveInterval();
 out.println("Session will expire in "+n+" seconds");
+String sid = session.getId();
+out.println("Your session id is: "+sid+"<br>");
 
 %>
 <!DOCTYPE html>
@@ -26,7 +28,7 @@ out.println("Session will expire in "+n+" seconds");
 	<a href="ActiveCaseServlet">Active cases</a>
 	<a href="RecoveredCaseServlet">Recovered Cases</a>
 	<a href="TotalDeathServlet">Total-Deaths</a>
-	<a href="index.jsp">Logout</a>
+	<a href="KillSession">Logout</a>
 	<hr>
 	</pre>
 </body>

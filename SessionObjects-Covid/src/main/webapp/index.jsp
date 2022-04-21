@@ -11,6 +11,7 @@
 	<form action="VerifyUser">
 		UserId: <input type="text" name="t1"/>
 		<input type="submit" value="Login"/>
+		
 	</form>
 </body>
 </html>

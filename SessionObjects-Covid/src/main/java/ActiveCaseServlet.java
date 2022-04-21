@@ -1,5 +1,6 @@
 
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +14,14 @@ import java.io.PrintWriter;
 public class ActiveCaseServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//reading data from context object 
+		//fetch the context object
+		ServletContext context = getServletContext();
+		//read the data;
+		String app = (String) context.getAttribute("AppName");
+		
+		
 		
 		//reading the userid from session
 		//step1- fetch the session object
@@ -28,7 +37,7 @@ public class ActiveCaseServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<h3>Welcome "+uid+"</h3>");
-		
+		out.println("<h3>"+app+"</hr><br>");
 		out.println("<h3>Active Cases: 324567</h3>");
 		out.println("<h4><a href = dashboard.jsp>dashboard</a></h4>");
 		out.println("</body></html>");

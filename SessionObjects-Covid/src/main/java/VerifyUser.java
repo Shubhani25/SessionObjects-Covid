@@ -1,5 +1,6 @@
 
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +14,14 @@ import java.io.PrintWriter;
 public class VerifyUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//we store the app name to context object
+		//fetch the context object
+		ServletContext context = getServletContext();
+		
+		//to store something to this;
+		context.setAttribute("AppName", "Information");
+		
+		
 		String id = request.getParameter("t1");
 		
 		if(id.equalsIgnoreCase("abc") || id.equalsIgnoreCase("qwe") || id.equalsIgnoreCase("rty")) {
@@ -24,6 +33,7 @@ public class VerifyUser extends HttpServlet {
 			
 			//step2- store the data to this session object by using a method called setAttribute
 			session.setAttribute("userid", id); 
+			session.setAttribute("logintime", new java.util.Date());
 			
 			response.sendRedirect("dashboard.jsp");
 		}

@@ -10,21 +10,25 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class RecoveredCaseServlet extends HttpServlet {
+public class KillSession extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		String uid = (String) session.getAttribute("userid");
-		
 		PrintWriter out = response.getWriter();
-		out.println("<html><body>");
-		out.println("<h3> Welcome "+uid+"</h3>");
-		out.println("<h3>Recovered Cases: 4567</h3>");
-		out.println("<h4><a href = dashboard.jsp>dashboard</a></h4>");
-		out.println("</body></html>");
+		//this session will kill the session of this user
+		
+		//obtain session created for this user
+		HttpSession session = request.getSession();
+		
+		//call invalidate() to destroy the session
+		session.invalidate();
+		
+		//redirect user to the home page.
+		response.sendRedirect("index.jsp");
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
