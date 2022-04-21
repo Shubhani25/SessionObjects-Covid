@@ -1,5 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.Date"%>
+<%
+String uid = (String) session.getAttribute("userid");
+if(uid==null){
+	response.sendRedirect("index.jsp");
+}
+
+long val = session.getCreationTime();
+Date dt = new Date(val);
+out.println("Session was created at: "+dt);
+out.println("<br>");
+int n = session.getMaxInactiveInterval();
+out.println("Session will expire in "+n+" seconds");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>

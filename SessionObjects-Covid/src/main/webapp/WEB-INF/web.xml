@@ -49,4 +49,8 @@
     <servlet-name>TotalDeathServlet</servlet-name>
     <url-pattern>/TotalDeathServlet</url-pattern>
   </servlet-mapping>
-</web-app>
+  
+  <session-config>
+        <session-timeout>10</session-timeout>
+    </session-config>
+ </web-app>

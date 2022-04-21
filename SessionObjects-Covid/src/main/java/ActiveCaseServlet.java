@@ -21,6 +21,10 @@ public class ActiveCaseServlet extends HttpServlet {
 		//step2- read the data
 		String uid = (String) session.getAttribute("userid"); 
 		
+		if(uid==null) {
+			response.sendRedirect("index.jsp");
+		}
+		
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<h3>Welcome "+uid+"</h3>");

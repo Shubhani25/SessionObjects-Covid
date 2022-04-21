@@ -17,6 +17,10 @@ public class RecoveredCaseServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String uid = (String) session.getAttribute("userid");
 		
+		if(uid==null) {
+			response.sendRedirect("index.jsp");
+		}
+		
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<h3> Welcome "+uid+"</h3>");
